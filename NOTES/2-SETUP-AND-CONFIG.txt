@@ -1,0 +1,782 @@
+
+
+
+
+
+
+
+
+
+
+OK... AGORA VAMOS COMEÇAR COM O SETUP DE NOSSO PROJECT, E COM O SETUP DE NOSSA CONFIG...
+
+
+
+
+
+
+
+
+
+
+
+
+--> FAREMOS 1 COISA QUE AINDA NÃO FIZEMOS NA CONFIG FILE.... QUE É 
+                                                                CRIAR 
+                                                                CUSTOM CLASSES 
+                                                                NELA, EM VEZ DE EM 'style.css'...
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+
+
+
+JÁ PEGAMOS TODAS AS IMAGES...
+
+
+
+
+
+
+
+
+
+
+
+
+--> O PROFESSOR FAZ EXTEND DE ALGUMAS COLORS, TIPO ASSIM:
+
+
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['*'],
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    extend: {
+      colors: {
+        darkBlue: 'hsl(217, 28%, 15%)',
+        darkBlue1: 'hsl(218, 28%, 13%)',
+        darkBlue2: 'hsl(216, 53%, 9%)',
+        darkBlue3: 'hsl(219, 30%, 18%)',
+        accentCyan: 'hsl(176, 68%, 64%)',
+        accentBlue: 'hsl(198, 60%, 50%)',
+        lightRed: 'hsl(0, 100%, 63%)',
+      },
+    },
+  },
+  plugins: [],
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+VAMOS USAR 2 FONTS, 'railway' e 'open-sans',
+
+tipo assim:
+
+
+
+
+
+
+
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['*'],
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    extend: {
+      colors: {
+        darkBlue: 'hsl(217, 28%, 15%)',
+        darkBlue1: 'hsl(218, 28%, 13%)',
+        darkBlue2: 'hsl(216, 53%, 9%)',
+        darkBlue3: 'hsl(219, 30%, 18%)',
+        accentCyan: 'hsl(176, 68%, 64%)',
+        accentBlue: 'hsl(198, 60%, 50%)',
+        lightRed: 'hsl(0, 100%, 63%)',
+      },
+      fontFamily: {
+        sans: ['Raleway', 'sans-serif'],
+        opensans: ['Open Sans', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ok... 
+
+
+
+
+
+
+
+
+
+ENTRETANTO, AGORA, EXPLICA O PROFESSOR, FAREMOS ALGO 
+
+__DIFERENTE__...
+
+
+
+
+
+
+''PRECISAMOS TER ALGUMAS BACKGROUND IMAGES, 
+    COMO O LOGO (fylo), QUE SERÁ 2 DIFERENTES IMAGES,
+    A DEPENDER SE ESTAMOS NO LIGHT OU DARK MODE...''''
+
+
+    temos 1 logo fylo branco, e outro preto...
+
+
+
+
+
+
+
+FAREMOS ESSA MESMA COISA PARA A CURVE IMAGE (que temos em 1 versão DARK e outra, LIGHT)...
+
+
+
+
+
+
+
+
+
+--> NO CASO, O QUE O PROFESSOR QUER É TER 2 'bg classes' (background),
+        que podemos usar 
+        para 
+
+        INSERIR ESSAS IMAGES...
+
+
+
+
+
+--> ISSO PQ, ATÉ AGORA, QUANDO QUERÍAMOS DEFINIR 1 IMAGE COMO SENDO ALGUM BACKGROUND 
+    DE NOSSA PAGE, SEMPRE ADICIONÁVAMOS ISSO EM CUSTOM CLASSES, DIRETAMENTE NO 'style.css'...
+
+
+
+--> MAS AGORA O PROFESSOR NOS EXPLICA QUE PODEMOS 
+DEFINIR 1 
+
+KEY 
+
+
+DE 
+
+'backgroundImage',
+
+
+que é essa property aí,
+
+
+
+e aí 
+
+
+
+definir 
+
+
+
+O VALUE DISSO COMO SENDO 1 __ FUNCTION ( '() => {}' ),
+
+
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['*'],
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    extend: {
+      colors: {
+        darkBlue: 'hsl(217, 28%, 15%)',
+        darkBlue1: 'hsl(218, 28%, 13%)',
+        darkBlue2: 'hsl(216, 53%, 9%)',
+        darkBlue3: 'hsl(219, 30%, 18%)',
+        accentCyan: 'hsl(176, 68%, 64%)',
+        accentBlue: 'hsl(198, 60%, 50%)',
+        lightRed: 'hsl(0, 100%, 63%)',
+      },
+      fontFamily: {
+        sans: ['Raleway', 'sans-serif'],
+        opensans: ['Open Sans', 'sans-serif'],
+      },
+      backgroundImage: (theme) => { // we can define background images here, with a function...
+
+      }
+    },
+  },
+  plugins: [],
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> essa function recebe 'theme' como parametro, sempre... podemos 
+    usar esse theme object, se quisermos, para editar estilos adicionais...
+
+
+
+
+
+
+
+
+
+
+
+
+--> O QUE VAMOS FAZER, AQUI, É 
+
+DEFINIR 1 classe 'bg', 
+
+que poderemos usar... o nome da class não deve ter 'bg',
+
+
+
+pq essa class será usada, no futuro, como 'bg-nomeDaClasse'...
+
+
+
+
+ex:
+
+
+
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['*'],
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    extend: {
+      colors: {
+        darkBlue: 'hsl(217, 28%, 15%)',
+        darkBlue1: 'hsl(218, 28%, 13%)',
+        darkBlue2: 'hsl(216, 53%, 9%)',
+        darkBlue3: 'hsl(219, 30%, 18%)',
+        accentCyan: 'hsl(176, 68%, 64%)',
+        accentBlue: 'hsl(198, 60%, 50%)',
+        lightRed: 'hsl(0, 100%, 63%)',
+      },
+      fontFamily: {
+        sans: ['Raleway', 'sans-serif'],
+        opensans: ['Open Sans', 'sans-serif'],
+      },
+      backgroundImage: (theme) => { // we can define background images here, with a function...
+        'nome-da-classe': XXXXX
+      }
+    },
+  },
+  plugins: [],
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+no caso, 
+
+
+
+vamos definir 1 background novo assim:
+
+
+
+
+
+
+
+      backgroundImage: (theme) => {// we can define images as backgrounds (bg classes) here, with a function...
+        return {
+          'logo-dark-mode': 'url(/images/logo-dark-mode.svg)', // * Will be used as 'bg-logo-dark-mode'
+          'logo-light-mode': 'url(/images/logo-light-mode.svg)', // * Will be used as 'bg-logo-light-mode'
+          'curvy-dark-mode': 'url(/images/bg-curvy-dark-mode.svg)', // * Will be used as 'bg-curvy-dark-mode' 
+          'curvy-light-mode': 'url(/images/bg-curvy-light-mode.svg)', // * Will be used as 'bg-curvylight-mode'
+        };
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+USAREMOS ESSE TIPO DE BACKGROUND COM ESCRITAS TIPO 
+
+
+'bg-logo-dark-mode'...
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... PQ QUEREMOS TER 1 IMAGE PARA CADA TIPO DE MODE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--> MAS QUEREMOS SER CAPAZES DE ATIVAR ESSAS CLASSES DE 'bg-dark...'
+    sempre que nosso mode estiver como DARK...
+
+
+
+
+
+--> para isso, precisamos adicionar uma NOVA KEY,
+
+    chamada de 'variants',
+
+    que segurará um OBJECT COM um 'extend'..
+
+
+
+
+
+    dentro do 'extend',
+
+    colocamos 
+
+    1 key para 'backgroundImage',
+
+
+
+
+
+e aí definimos um value de ''['dark']'',
+
+tipo assim:
+
+
+
+
+
+
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['*'],
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    extend: {
+      colors: {
+        darkBlue: 'hsl(217, 28%, 15%)',
+        darkBlue1: 'hsl(218, 28%, 13%)',
+        darkBlue2: 'hsl(216, 53%, 9%)',
+        darkBlue3: 'hsl(219, 30%, 18%)',
+        accentCyan: 'hsl(176, 68%, 64%)',
+        accentBlue: 'hsl(198, 60%, 50%)',
+        lightRed: 'hsl(0, 100%, 63%)',
+      },
+      fontFamily: {
+        sans: ['Raleway', 'sans-serif'],
+        opensans: ['Open Sans', 'sans-serif'],
+      },
+      backgroundImage: (theme) => {
+        // we can define images as backgrounds (bg classes) here, with a function...
+        return {
+          'logo-dark-mode': 'url(/images/logo-dark-mode.svg)', // * Will be used as 'bg-logo-dark-mode'
+          'logo-light-mode': 'url(/images/logo-light-mode.svg)', // * Will be used as 'bg-logo-light-mode'
+          'curvy-dark-mode': 'url(/images/bg-curvy-dark-mode.svg)', // * Will be used as 'bg-curvy-dark-mode'
+          'curvy-light-mode': 'url(/images/bg-curvy-light-mode.svg)', // * Will be used as 'bg-curvylight-mode'
+        };
+      },
+      variants: {
+        extend: {
+          backgroundImage: ['dark'],
+        },
+      },
+    },
+  },
+  plugins: [],
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+aí o professor fala do dark mode...
+
+
+
+
+
+
+
+
+
+se temos algo como isto:
+
+
+
+
+
+
+
+
+<h1 class="text-3xl dark:bg-black dark:text-white>
+
+
+
+
+
+
+
+
+
+
+
+
+SE ESTAMOS EM 1 SISTEMA OPERACIONAL COM DARK MODE ATIVADO,
+
+
+ISSO FAZ COM QUE ESSE STYLE JÁ SEJA APLICADO IMEDIATAMENTE...
+
+
+
+
+
+
+
+
+
+
+
+-> MAS AQUI NÃO QUEREMOS FAZER ISSO DISPARAR DIRETO,
+    E SIM QUEREMOS 
+    QUE SEJA 
+
+    TRIGGADO MANUALMENTE (a partir de 1 button no site),
+
+
+
+    por meio do add de uma class de 'dark', com javascript,
+
+
+    ao nosso html inteiro...
+
+
+
+
+
+
+
+
+tipo:
+
+
+<html lang="en" class="dark">
+
+
+
+
+
+
+
+
+
+
+
+--> para fazer isso funcionar, com o tailwind,
+
+
+    precisamos declarar, lá na config do tailwind,
+
+
+
+    'darkMode: 'class' ' ,
+
+
+
+
+
+    pq é isso que 
+
+    vai determinar que 
+
+    o dark mode vai ser ativado por meio de um toggle manual (com javascript),
+
+    com o add/remove de essa class de nosso html...
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['*'],
+  darkMode: 'class', // enables togglging between dark and light mode with javascript.
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    extend: {
+      colors: {
+        darkBlue: 'hsl(217, 28%, 15%)',
+        darkBlue1: 'hsl(218, 28%, 13%)',
+        darkBlue2: 'hsl(216, 53%, 9%)',
+        darkBlue3: 'hsl(219, 30%, 18%)',
+        accentCyan: 'hsl(176, 68%, 64%)',
+        accentBlue: 'hsl(198, 60%, 50%)',
+        lightRed: 'hsl(0, 100%, 63%)',
+      },
+      fontFamily: {
+        sans: ['Raleway', 'sans-serif'],
+        opensans: ['Open Sans', 'sans-serif'],
+      },
+      backgroundImage: (theme) => {
+        // we can define images as backgrounds (bg classes) here, with a function...
+        return {
+          'logo-dark-mode': 'url(/images/logo-dark-mode.svg)', // * Will be used as 'bg-logo-dark-mode'
+          'logo-light-mode': 'url(/images/logo-light-mode.svg)', // * Will be used as 'bg-logo-light-mode'
+          'curvy-dark-mode': 'url(/images/bg-curvy-dark-mode.svg)', // * Will be used as 'bg-curvy-dark-mode'
+          'curvy-light-mode': 'url(/images/bg-curvy-light-mode.svg)', // * Will be used as 'bg-curvylight-mode'
+        };
+      },
+      variants: {
+        extend: {
+          backgroundImage: ['dark'],
+        },
+      },
+    },
+  },
+  plugins: [],
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OK... TEREMOS 1 JAVASCRIPT QUE VAI ADICIONAR E REMOVER ESSA CLASS DINAMICAMENTE...
+
+
+
+
+
+
+
+
+
+
+
+--. PRECISAMOS PEGAR AS FONTS...
+
+
+
+
+
+
+
+PEGUEI E COLOQUEI NO HTML, ASSIM:
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body></body>
+</html>
+
+
+
+
+
+
+
+
+

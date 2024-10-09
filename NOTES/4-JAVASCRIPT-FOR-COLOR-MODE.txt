@@ -1,0 +1,232 @@
+
+
+
+
+
+
+
+OK... AGORA ADICIONAREMOS O JAVASCRIPT PARA CONSEGUIRMOS 
+
+
+FAZER O TOGGLE BUTTON MOSTRAR O SVG CORRETO, E TAMBÉM 
+
+
+
+PARA CONSEGUIR SALVAR A CONFIG NO LOCAL STORAGE,
+
+E AÍ BUSCAR ISSO NO LOCAL STORAGE, AO CARREGAR O SITE...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TEMOS 2 PARTES NECESSÁRIAS:
+
+
+
+
+
+
+
+1) UM CÓDIGO QUE CHECA NOSSO LOCAL STORAGE, BUSCANDO POR 
+
+1 KEY DE 'color-theme', de value 'dark'...
+
+
+
+
+
+
+
+--> ele também checa se nosso operating system está como 'prefers-color-scheme: dark' ...
+
+
+
+
+
+
+EX:
+
+
+    <script>
+      // https://www.freecodecamp.org/news/how-to-build-a-dark-mode-switcher-with-tailwind-css-and-flowbite
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO...
+
+
+
+
+
+
+
+
+ISSO É COLOCADO NA HEAD..., como é recomendado...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CRIAMOS UM ARQUIVO DE script.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+E AÍ 
+
+ESCREVEMOS ALGUNS SELECTORS...
+
+
+
+
+
+
+
+
+
+--> PRECISAMOS SELECIONAR:
+
+
+
+1)  O BUTTON EM SI.. (theme-toggle)
+
+
+
+
+2) SVG DE TOGGLE-DARK-ICON 
+
+
+
+3) SVG DE TOGGLE-LIGHT-ICON...
+
+
+
+
+
+
+
+TIPO ASSIM:
+
+
+
+
+
+
+
+
+
+
+
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+if (
+  localStorage.getItem('color-theme') === 'dark' ||
+  (!('color-theme' in localStorage) &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches)
+) {
+  // Show light icon
+  themeToggleLightIcon.classList.remove('hidden');
+} else {
+  themeToggleDarkIcon.classList.remove('hidden');
+}
+
+function switchTheme() {
+  /// Toggle Icon
+  themeToggleDarkIcon.classList.toggle('hidden');
+  themeToggleLightIcon.classList.toggle('hidden');
+
+  // If it is set in localStorage
+  if (localStorage.getItem('color-theme')) {
+    if (localStorage.getItem('color-theme') === 'light') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('color-theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('color-theme', 'light');
+    }
+  } else {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('color-theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('color-theme', 'dark');
+    }
+  }
+}
+
+themeToggleBtn.addEventListener('click', switchTheme);
+
+
+
+
+
+
+
+
+
+
+
+
+CERTO... FUNCIONOU...

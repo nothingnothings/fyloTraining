@@ -1,0 +1,105 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+É O SITE FAVORITO DO PROFESSOR DO CURSO....
+
+
+
+
+
+
+--> É O FYLO...
+
+
+
+
+
+-> TEMOS 1 SWITCHER ENTRE DARK MODE E LIGHT MODE...
+
+
+
+
+
+
+
+
+
+
+
+--> VAMOS SALVAR AS SETTINGS NO LOCAL STORAGE... SE SAÍMOS DO SITE E VOLTAMOS,
+
+    A OPÇÃO POR 'DARK' E 'LIGHT' CONTINUARÁ SALVA...
+
+
+
+
+
+
+
+
+
+
+
+-> TEMOS 1 HEADER NO TOPO, AÍ UMA SECTION DE 'HERO',
+        AÍ TEMOS 1 IMAGE,
+
+        QUE VAI MUDAR QUANDO TROCARMOS DE MODE (2 svgs, 1 para light e  outra para dark)..
+
+
+
+
+
+
+
+    
+
+
+
+-> temos a parte de testimonial boxes...
+
+
+
+também temos 1 caixa de 'get access', coisa bem padrão...
+
+
+
+
+
+tailwindc
+
+
+
+
+
+
+
+
+
+
+-> EM TELAS MENORES TEMOS O LOGO NO MEIO, E AÍ O NAVBAR LOGO ABAIXO...
+
+
+
+
+
+
+
+
+
+
+--> O DARK MODE SWITCHER FOI INSPIRADO 
+    POR 1 ARTIGO DO FREECODECAMP...
+
+
+
+    
